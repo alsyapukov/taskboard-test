@@ -1,4 +1,4 @@
-# vue
+# Task board, test task for sutochno.ru
 
 > A Vue.js project
 
