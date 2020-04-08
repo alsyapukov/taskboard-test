@@ -1,0 +1,300 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700&display=swap');
+@import "reset.scss";
+
+@mixin text-box-parent-style {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+$color-green: #228b22;
+$color-yellow: #ffff00;
+$color-red: #dc143c;
+
+body {
+  background-color: #fff;
+  color: #333;
+  font-family: Oswald, Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+input {
+  box-sizing: border-box;
+  outline: none;
+}
+
+textarea {
+  resize: none;
+  outline: none;
+  box-sizing: border-box;
+}
+
+button {
+  border: 1px solid transparent;
+  outline: none;
+}
+
+.radio {
+  -webkit-appearance: none;/* Chrome */
+  -moz-appearance: none;/* Firefox */
+  appearance: none;/* убираем стандартные кружочки */
+  position: absolute;
+}
+
+.radio:checked + .button {
+  background-color: #333;
+  border-color: #333;
+  color: #fff;
+}
+
+.radio:checked + .switch-task__item{
+  background-color: #333;
+  color: #fff;
+}
+
+.container {
+  &_size {
+    width: 1200px;
+    margin: 50px auto;
+  }
+}
+
+.layout {
+  display: flex;
+  flex-wrap: wrap;
+
+  &_edit-task {
+    &_size {
+      width: 30%;
+    }
+  }
+  &_content {
+    &_size {
+      width: 70%;
+    }
+  }
+}
+
+.edit-task {
+  &__item {
+    position: relative;
+
+    &_size {
+      margin: 10px;
+      padding: 10px;
+    }
+    &_border {
+      border: 1px solid #333;
+    }
+  }
+
+  &__element {
+    margin-bottom: 15px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__button-wrap {
+    &_inline {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+  }
+}
+
+.content {
+
+  &_size {
+    margin: 10px 20px;
+  }
+}
+
+.text-box {
+  @include text-box-parent-style;
+
+  &_size-m {
+    width: 100%;
+    min-height: 30px;
+    padding: 5px;
+  }
+}
+
+.textarea {
+  @include text-box-parent-style;
+
+  &_size-m {
+    width: 100%;
+    height: 90px;
+    padding: 5px;
+  }
+}
+
+.button {
+  @include text-box-parent-style;
+  transition: 0.3s all ease;
+  border: 1px solid transparent;
+  text-align: center;
+  display: block;
+  cursor: pointer;
+
+  &_size {
+    &-sm {
+      padding: 10px 0;
+      width: 100px;
+    }
+    &-along {
+      padding: 10px 0;
+      width: 100%;
+    }
+  }
+
+  &_theme {
+    &-green {
+      background-color: $color-green;
+    }
+    &-yellow {
+      background-color: $color-yellow;
+    }
+    &-red {
+      background-color: $color-red;
+    }
+    &-green,
+    &-yellow,
+    &-red{
+      &:hover {
+        //border: 1px solid #333;
+        opacity: 0.8;
+      }
+    }
+    &-transparent {
+      background-color: transparent;
+      &:hover {
+        background-color: #333;
+        color: #fff;
+      }
+    }
+  }
+
+  &_border {
+    border: 1px solid #333;
+  }
+
+  &_radius {
+    border-radius: 4px;
+  }
+}
+
+.task {
+
+  &_border {
+    border: 1px solid #333;
+  }
+
+  &_position {
+    padding: 40px 15px;
+  }
+
+  &_size {
+    height: 510px;
+    overflow-y: auto;
+  }
+
+  &__item {
+    &_border {
+      border: 1px solid #333;
+    }
+
+    &_position {
+      padding: 20px 50px 20px 20px;
+      position: relative;
+      margin-bottom: 20px;
+      min-height: 90px;
+    }
+  }
+
+  &__status {
+    border-right: 1px solid #333;
+    width: 10px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+
+    &_light {
+      background-color: $color-green;
+    }
+
+    &_medium {
+      background-color: $color-yellow;
+    }
+
+    &_hard {
+      background-color: $color-red;
+    }
+  }
+
+  &__element {
+    margin-bottom: 10px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.edit-panel {
+  position: absolute;
+  right: 15px;
+  top: 20px;
+
+  &__edit,
+  &__delete {
+    content: '';
+    width: 30px;
+    height: 30px;
+    margin-bottom: 30px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    cursor: pointer;
+  }
+
+  &__edit {
+    background-image: url("/src/img/edit.svg");
+  }
+  &__delete {
+    background-image: url("/src/img/del.svg");
+  }
+}
+
+.switch-task {
+
+  &__line {
+    display: inline-block;
+  }
+
+  &__item {
+    cursor: pointer;
+
+    &_size {
+      padding: 20px 30px;
+    }
+
+    &_visual {
+      background-color: #fff;
+      border-top: 1px solid #333;
+      border-right: 1px solid #333;
+      border-left: 1px solid #333;
+      display: inline-block;
+    }
+
+    &_active {
+      background-color: #333;
+      color: #fff;
+    }
+
+  }
+}
